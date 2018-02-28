@@ -41,6 +41,9 @@ void Scale9SpriteLoader::setSpecialProperties(Node* node, const Size &parentSize
     const std::pair<bool,bool> &flipped = getNodeParamValue(params, PROPERTY_FLIP, _flipped);
     sprite->setFlippedX(flipped.first);
     sprite->setFlippedY(flipped.second);
+    
+    const SpriteFrameDescription &spriteFrame = getNodeParamValue(params, PROPERTY_SPRITEFRAME, _spriteFrame);
+    sprite->setName(spriteFrame.path);
 }
 
 Scale9SpriteLoader::Scale9SpriteLoader()
