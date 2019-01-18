@@ -1,7 +1,7 @@
 /****************************************************************************
 Copyright (c) 2011      ForzeField Studios S.L.
 Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2013-2017 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
 
 http://www.cocos2d-x.org
 
@@ -146,6 +146,9 @@ public:
     virtual void setOpacity(GLubyte opacity) override;
     virtual void setOpacityModifyRGB(bool value) override;
     virtual bool isOpacityModifyRGB() const override;
+
+    void followNode(Node *node, const Vec2& point);
+    void clearFollowNode();
     
 CC_CONSTRUCTOR_ACCESS:
     MotionStreak();
@@ -187,6 +190,10 @@ protected:
     Tex2F* _texCoords;
     
     CustomCommand _customCommand;
+
+    bool _isFollowingNode;
+    Vec2 _followPoint;
+    Node *_followNode;
 
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(MotionStreak);
