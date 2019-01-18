@@ -39,7 +39,7 @@ public:
      @param new width
      @param new height
      */
-    virtual void applicationScreenSizeChanged(int newWidth, int newHeight);
+    virtual void applicationScreenSizeChanged(int newWidth, int newHeight) override;
 };
 
 #endif // _APP_DELEGATE_H_

@@ -181,3 +181,5 @@ void AppDelegate::applicationWillEnterForeground()
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     SimpleAudioEngine::getInstance()->resumeAllEffects();
 }
+
+void AppDelegate::applicationScreenSizeChanged(int newWidth, int newHeight) {}
