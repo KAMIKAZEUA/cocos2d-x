@@ -90,6 +90,16 @@ const char * Application::getCurrentLanguageCode()
     NSArray *languages = [defaults objectForKey:@"AppleLanguages"];
     NSString *currentLanguage = [languages objectAtIndex:0];
 
+    if ([currentLanguage hasPrefix:@"zh-Hans"]) {
+        return "zh-Hans";
+    }
+    if ([currentLanguage hasPrefix:@"zh-Hant"]) {
+        return "zh-Hant";
+    }
+    if ([currentLanguage hasPrefix:@"zh"]) {
+        return "zh-Hans";
+    }
+    
     // get the current language code.(such as English is "en", Chinese is "zh" and so on)
     NSDictionary* temp = [NSLocale componentsFromLocaleIdentifier:currentLanguage];
     NSString * languageCode = [temp objectForKey:NSLocaleLanguageCode];
