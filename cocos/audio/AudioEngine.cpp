@@ -251,6 +251,7 @@ int AudioEngine::play2d(const std::string& filePath, bool loop, float volume, co
             auto& audioRef = _audioIDInfoMap[ret];
             audioRef.volume = volume;
             audioRef.loop = loop;
+            audioRef.pitch = 1.0f;
             audioRef.filePath = &it->first;
 
             if (profileHelper) {
@@ -290,6 +291,25 @@ void AudioEngine::setVolume(int audioID, float volume)
         }
     }
 }
+
+void AudioEngine::setPitch(int audioID, float pitch)
+{
+    auto it = _audioIDInfoMap.find(audioID);
+    if (it != _audioIDInfoMap.end()){
+        if (pitch < 0.5f) {
+            pitch = 0.5f;
+        }
+        else if (pitch > 2.0f){
+            pitch = 2.0f;
+        }
+        
+        if (it->second.pitch != pitch){
+            _audioEngineImpl->setPitch(audioID, pitch);
+            it->second.pitch = pitch;
+        }
+    }
+}
+
 
 void AudioEngine::pause(int audioID)
 {

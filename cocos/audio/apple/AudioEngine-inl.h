@@ -50,6 +50,7 @@ public:
     int play2d(const std::string &fileFullPath ,bool loop ,float volume);
     void setVolume(int audioID,float volume);
     void setLoop(int audioID, bool loop);
+    void setPitch(int audioID, float pitch);
     bool pause(int audioID);
     bool resume(int audioID);
     void stop(int audioID);
