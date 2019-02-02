@@ -296,11 +296,11 @@ void AudioEngine::setPitch(int audioID, float pitch)
 {
     auto it = _audioIDInfoMap.find(audioID);
     if (it != _audioIDInfoMap.end()){
-        if (pitch < 0.5f) {
-            pitch = 0.5f;
+        if (pitch < 0.1f) {
+            pitch = 0.1f;
         }
-        else if (pitch > 2.0f){
-            pitch = 2.0f;
+        else if (pitch > 5.0f){
+            pitch = 5.0f;
         }
         
         if (it->second.pitch != pitch){
