@@ -15,7 +15,6 @@
 #include "renderer/CCTextureCache.h"
 #include "renderer/CCTexture2D.h"
 #include "base/CCDirector.h"
-#include "physics/CCPhysicsBody.h"
 #include "platform/CCFileUtils.h"
 #include "CCBXNodeLoaderLibrary.h"
 #include "CCBXNodeLoaderCache.h"
@@ -34,41 +33,7 @@ class BasePhysicsBodyLoader : public PhysicsBodyLoader
 public:
     void setParams(PhysicsBody* body) const
     {
-#if CC_USE_PHYSICS
-        body->setDynamic(dynamic);
-        
-        if(dynamic && setMass)
-            body->setMass(mass);
-        if(dynamic && setMoment)
-            body->setMoment(moment);
-        
-        body->setCategoryBitmask(categoryBitmask);
-        body->setContactTestBitmask(contactTestBitmask);
-        body->setCollisionBitmask(collisionBitmask);
-        
-        if(dynamic)
-        {
-            body->setVelocity(velocity * CCBXReader::getResolutionScale());
-            body->setVelocityLimit(velocityLimit * CCBXReader::getResolutionScale());
-            body->setAngularVelocity(angularVelocity * CCBXReader::getResolutionScale());
-            body->setAngularVelocityLimit(angularVelocityLimit * CCBXReader::getResolutionScale());
-            body->setLinearDamping(linearDamping * CCBXReader::getResolutionScale());
-            body->setAngularDamping(angularDamping * CCBXReader::getResolutionScale());
-        }
-        
-        if (dynamic)
-        {
-            body->setGravityEnable(affectedByGravity);
-            body->setRotationEnable(allowsRotation);
-        }
-        
-        for(const auto &it : body->getShapes())
-        {
-            it->setDensity(density);
-            it->setFriction(friction);
-            it->setRestitution(elasticity);
-        }
-#endif
+
     }
     
     bool dynamic;
@@ -112,24 +77,7 @@ public:
     }
     virtual PhysicsBody* createBody(const Node* node) const override
     {
-#if CC_USE_PHYSICS
-        const Size &size = node->getContentSize();
-        PhysicsBody *ret =  PhysicsBody::create();
-        for (size_t i=0; i < _polygons.size(); i++)
-        {
-            std::vector<Point> polygon;
-            polygon.reserve(_polygons[i].size());
-            for(size_t j=0;j<_polygons[i].size();++j)
-            {
-                polygon.push_back(Point(_polygons[i][j].x * CCBXReader::getResolutionScale() - size.width/2, _polygons[i][j].y * CCBXReader::getResolutionScale() - size.height/2));
-            }
-            ret->addShape(PhysicsShapePolygon::create(&polygon.front(), (int)polygon.size(), PHYSICSBODY_MATERIAL_DEFAULT));
-        }
-        setParams(ret);
-        return ret;
-#else
         return nullptr;
-#endif
     }
 CC_CONSTRUCTOR_ACCESS:
     ShapePolygonLoader(const std::vector<std::vector<Point>> &polygons):_polygons(polygons){}
@@ -150,14 +98,7 @@ public:
     }
     virtual PhysicsBody* createBody(const Node* node) const override
     {
-#if CC_USE_PHYSICS
-        const Size &size = node->getContentSize();
-        PhysicsBody* ret = PhysicsBody::createCircle(_radius * CCBXReader::getResolutionScale(), PHYSICSBODY_MATERIAL_DEFAULT, Vec2(_center.x * CCBXReader::getResolutionScale() - size.width/2, _center.y * CCBXReader::getResolutionScale() - size.height/2));
-        setParams(ret);
-        return ret;
-#else
         return nullptr;
-#endif
     }
 CC_CONSTRUCTOR_ACCESS:
     ShapeCircleLoader(const Vec2 &center, float radius):_center(center),_radius(radius){}

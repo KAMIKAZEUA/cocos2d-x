@@ -9,7 +9,6 @@
 #include "CCBXNodeLoader.h"
 #include "CCBXSequence.h"
 #include "CCBXAnimationManager.h"
-#include "physics/CCPhysicsBody.h"
 #include "base/CCDirector.h"
 
 NS_CC_BEGIN
@@ -284,10 +283,7 @@ bool NodeLoader::loadNode(Node *node, const Size &parentSize, float mainScale, f
         manager->setObject(it.second, node, it.first);
     }
     setAnimation(node, manager);
-#if CC_USE_PHYSICS
-    if(_physicsLoader)
-        node->setPhysicsBody(_physicsLoader->createBody(node));
-#endif
+
     CCBXReaderOwner *newParentOwner = dynamic_cast<CCBXReaderOwner*>(node);
     if(newParentOwner)
         parentOwner = newParentOwner;
