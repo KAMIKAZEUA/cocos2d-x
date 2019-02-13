@@ -2156,7 +2156,6 @@
 		1A5703BA180BD2800088DEC7 /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwebp.a; sourceTree = "<group>"; };
 		1A57052A180BD31F0088DEC7 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreetype.a; sourceTree = "<group>"; };
 		1A57052D180BD3280088DEC7 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfreetype.a; sourceTree = "<group>"; };
-		1A57FFF7180BC5160088DEC7 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; name = CHANGELOG; path = ../CHANGELOG; sourceTree = "<group>"; };
 		1A5FB7C31DF012D900C918C1 /* AudioMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioMacros.h; sourceTree = "<group>"; };
 		1A97ABFC1A1D962A0076D9CC /* MathUtilNeon64.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MathUtilNeon64.inl; sourceTree = "<group>"; };
 		1A97ABFD1A1D962A0076D9CC /* MathUtilSSE.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MathUtilSSE.inl; sourceTree = "<group>"; };
@@ -2320,8 +2319,6 @@
 		468A14DD1EF223B600ECA675 /* idl_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = idl_parser.cpp; sourceTree = "<group>"; };
 		468A14DE1EF223B600ECA675 /* idl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idl.h; sourceTree = "<group>"; };
 		468A14DF1EF223B600ECA675 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
-		46A15FCC1807A544005B8026 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; name = AUTHORS; path = ../AUTHORS; sourceTree = "<group>"; };
-		46A15FCE1807A544005B8026 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		46A15FE11807A56F005B8026 /* Export.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Export.h; sourceTree = "<group>"; };
 		46A15FE21807A56F005B8026 /* SimpleAudioEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleAudioEngine.h; sourceTree = "<group>"; };
 		46A15FE41807A56F005B8026 /* CDAudioManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
@@ -2733,7 +2730,6 @@
 		50CB247419D9C5A100687767 /* AudioPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioPlayer.mm; sourceTree = "<group>"; };
 		50CE4D1D1D243DD8003D2FB9 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
 		50CE4D1E1D243DD8003D2FB9 /* glfw3native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
-		50DC5180187B817900A9C23F /* RELEASE_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = RELEASE_NOTES.md; path = ../docs/RELEASE_NOTES.md; sourceTree = "<group>"; };
 		50E6D32E18E174130051CA34 /* UIHBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIHBox.cpp; sourceTree = "<group>"; };
 		50E6D32F18E174130051CA34 /* UIHBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHBox.h; sourceTree = "<group>"; };
 		50E6D33018E174130051CA34 /* UIRelativeBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIRelativeBox.cpp; sourceTree = "<group>"; };
@@ -2968,17 +2964,6 @@
 		D820544E1E93D88C00397EB0 /* buzz.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = buzz.js; sourceTree = "<group>"; };
 		D820544F1E93D88C00397EB0 /* SimpleAudioEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleAudioEngine.cpp; sourceTree = "<group>"; };
 		D82054501E93D88C00397EB0 /* SimpleAudioEngine.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = SimpleAudioEngine.js; sourceTree = "<group>"; };
-		D85F54661D2BAAE200F49F75 /* CCApplication-emcc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "CCApplication-emcc.cpp"; sourceTree = "<group>"; };
-		D85F54671D2BAAE200F49F75 /* CCApplication-emcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCApplication-emcc.h"; sourceTree = "<group>"; };
-		D85F54681D2BAAE200F49F75 /* CCCommon-emcc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "CCCommon-emcc.cpp"; sourceTree = "<group>"; };
-		D85F54691D2BAAE200F49F75 /* CCDevice-emcc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "CCDevice-emcc.cpp"; sourceTree = "<group>"; };
-		D85F546A1D2BAAE200F49F75 /* CCFileUtils-emcc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "CCFileUtils-emcc.cpp"; sourceTree = "<group>"; };
-		D85F546B1D2BAAE200F49F75 /* CCFileUtils-emcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCFileUtils-emcc.h"; sourceTree = "<group>"; };
-		D85F546C1D2BAAE200F49F75 /* CCGL-emcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCGL-emcc.h"; sourceTree = "<group>"; };
-		D85F546D1D2BAAE200F49F75 /* CCGLViewImpl-emcc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "CCGLViewImpl-emcc.cpp"; sourceTree = "<group>"; };
-		D85F546E1D2BAAE200F49F75 /* CCGLViewImpl-emcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCGLViewImpl-emcc.h"; sourceTree = "<group>"; };
-		D85F546F1D2BAAE200F49F75 /* CCPlatformDefine-emcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCPlatformDefine-emcc.h"; sourceTree = "<group>"; };
-		D85F54701D2BAAE200F49F75 /* CCStdC-emcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCStdC-emcc.h"; sourceTree = "<group>"; };
 		D86D5EDB1E1567EE00AC1C01 /* ccShader_GradientLabel.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ccShader_GradientLabel.vert; sourceTree = "<group>"; };
 		DA8C62A019E52C6400000516 /* ioapi_mem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ioapi_mem.cpp; sourceTree = "<group>"; };
 		DA8C62A119E52C6400000516 /* ioapi_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi_mem.h; sourceTree = "<group>"; };
@@ -3032,12 +3017,8 @@
 		1551A334158F2AB200E66CFE = {
 			isa = PBXGroup;
 			children = (
-				46A15FCC1807A544005B8026 /* AUTHORS */,
-				1A57FFF7180BC5160088DEC7 /* CHANGELOG */,
 				50272539190BF1B900AAF4ED /* cocos2d.cpp */,
 				50272538190BF1B900AAF4ED /* cocos2d.h */,
-				46A15FCE1807A544005B8026 /* README.md */,
-				50DC5180187B817900A9C23F /* RELEASE_NOTES.md */,
 				46A169A11807B037005B8026 /* 2d */,
 				B29594B81926D61F003EEF37 /* 3d */,
 				46A15FD01807A56F005B8026 /* audio */,
@@ -4729,7 +4710,6 @@
 		50ABBEDB1926664700A911A9 /* platform */ = {
 			isa = PBXGroup;
 			children = (
-				D85F54651D2BAAE200F49F75 /* emcc */,
 				503DD8CD1926736A00CD74DD /* ios */,
 				50ABBF2D1926664700A911A9 /* desktop */,
 				50ABBF4E1926664700A911A9 /* mac */,
@@ -5089,24 +5069,6 @@
 				D820544E1E93D88C00397EB0 /* buzz.js */,
 				D820544F1E93D88C00397EB0 /* SimpleAudioEngine.cpp */,
 				D82054501E93D88C00397EB0 /* SimpleAudioEngine.js */,
-			);
-			path = emcc;
-			sourceTree = "<group>";
-		};
-		D85F54651D2BAAE200F49F75 /* emcc */ = {
-			isa = PBXGroup;
-			children = (
-				D85F54661D2BAAE200F49F75 /* CCApplication-emcc.cpp */,
-				D85F54671D2BAAE200F49F75 /* CCApplication-emcc.h */,
-				D85F54681D2BAAE200F49F75 /* CCCommon-emcc.cpp */,
-				D85F54691D2BAAE200F49F75 /* CCDevice-emcc.cpp */,
-				D85F546A1D2BAAE200F49F75 /* CCFileUtils-emcc.cpp */,
-				D85F546B1D2BAAE200F49F75 /* CCFileUtils-emcc.h */,
-				D85F546C1D2BAAE200F49F75 /* CCGL-emcc.h */,
-				D85F546D1D2BAAE200F49F75 /* CCGLViewImpl-emcc.cpp */,
-				D85F546E1D2BAAE200F49F75 /* CCGLViewImpl-emcc.h */,
-				D85F546F1D2BAAE200F49F75 /* CCPlatformDefine-emcc.h */,
-				D85F54701D2BAAE200F49F75 /* CCStdC-emcc.h */,
 			);
 			path = emcc;
 			sourceTree = "<group>";
