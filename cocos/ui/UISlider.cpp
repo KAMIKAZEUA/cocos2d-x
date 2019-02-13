@@ -27,7 +27,6 @@ THE SOFTWARE.
 #include "ui/UIHelper.h"
 #include "2d/CCSprite.h"
 #include "2d/CCCamera.h"
-#include "editor-support/cocostudio/CocosStudioExtension.h"
 
 NS_CC_BEGIN
 
@@ -862,48 +861,6 @@ Node* Slider::getSlidBallRenderer() const {
     return _slidBallRenderer;
 }
 
-ResourceData Slider::getBackFile()
-{
-    ResourceData rData;
-    rData.type = (int)_barTexType;
-    rData.file = _textureFile;
-    return rData;
-}
-ResourceData Slider::getProgressBarFile()
-{
-    ResourceData rData;
-    rData.type = (int)_progressBarTexType;
-    rData.file = _progressBarTextureFile;
-    return rData;
-}
-ResourceData Slider::getBallNormalFile()
-{
-    ResourceData rData;
-    rData.type = (int)_ballNTexType;
-    rData.file = _slidBallNormalTextureFile;
-    return rData;
-}
-ResourceData Slider::getBallPressedFile()
-{
-    ResourceData rData;
-    rData.type = (int)_ballPTexType;
-    rData.file = _slidBallPressedTextureFile;
-    return rData;
-}
-ResourceData Slider::getBallDisabledFile()
-{
-    ResourceData rData;
-    rData.type = (int)_ballDTexType;
-    rData.file = _slidBallDisabledTextureFile;
-    return rData;
-}
-ResourceData Slider::getBallMouseOverFile()
-{
-    ResourceData rData;
-    rData.type = (int)_ballMTexType;
-    rData.file = _slidBallMouseOverTextureFile;
-    return rData;
-}
 
 Node *Slider::getSlidBarNode() const
 {

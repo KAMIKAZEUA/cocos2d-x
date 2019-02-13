@@ -27,7 +27,7 @@ THE SOFTWARE.
 #include "ui/UIHelper.h"
 #include "2d/CCSprite.h"
 #include "2d/CCCamera.h"
-#include "editor-support/cocostudio/CocosStudioExtension.h"
+
 #include "base/CCDirector.h"
 #include "base/CCEventListenerMouse.h"
 #include "base/CCEventDispatcher.h"
@@ -950,43 +950,6 @@ void ScrollBar::copySpecialProperties(Widget *widget)
         _eventCallback = slider->_eventCallback;
         _ccEventCallback = slider->_ccEventCallback;
     }
-}
-
-ResourceData ScrollBar::getBackFile()
-{
-    ResourceData rData;
-    rData.type = (int)_barTexType;
-    rData.file = _textureFile;
-    return rData;
-}
-
-ResourceData ScrollBar::getBallNormalFile()
-{
-    ResourceData rData;
-    rData.type = (int)_ballNTexType;
-    rData.file = _slidBallNormalTextureFile;
-    return rData;
-}
-ResourceData ScrollBar::getBallPressedFile()
-{
-    ResourceData rData;
-    rData.type = (int)_ballPTexType;
-    rData.file = _slidBallPressedTextureFile;
-    return rData;
-}
-ResourceData ScrollBar::getBallDisabledFile()
-{
-    ResourceData rData;
-    rData.type = (int)_ballDTexType;
-    rData.file = _slidBallDisabledTextureFile;
-    return rData;
-}
-ResourceData ScrollBar::getBallMouseOverFile()
-{
-    ResourceData rData;
-    rData.type = (int)_ballMTexType;
-    rData.file = _slidBallMouseOverTextureFile;
-    return rData;
 }
 
 Node *ScrollBar::getSlidBarNode() const

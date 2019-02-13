@@ -192,7 +192,6 @@ public:
      */
     virtual bool isFlippedY() const  override;
 
-    ResourceData getRenderFile();
 
     virtual void setGLProgram(GLProgram* glProgram) override;
     virtual void setGLProgramState(cocos2d::GLProgramState* glProgramState) override;

@@ -27,7 +27,6 @@ THE SOFTWARE.
 #include "ui/UIHelper.h"
 #include "base/CCDirector.h"
 #include "2d/CCSprite.h"
-#include "editor-support/cocostudio/CocosStudioExtension.h"
 
 NS_CC_BEGIN
 
@@ -388,14 +387,6 @@ void TileImageView::copySpecialProperties(Widget *widget)
         }
         setImageScale(imageView->_imageScale);
     }
-}
-
-ResourceData TileImageView::getRenderFile()
-{
-    ResourceData rData;
-    rData.type = (int)_imageTexType;
-    rData.file = _textureFile;
-    return rData;
 }
     
 void TileImageView::setGLProgram(GLProgram* glProgram)

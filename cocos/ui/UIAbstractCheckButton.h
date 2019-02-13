@@ -162,11 +162,6 @@ public:
      */
     Sprite* getRendererFrontCrossDisabled() const { return _frontCrossDisabledRenderer; }
 
-    ResourceData getBackNormalFile();
-    ResourceData getBackPressedFile();
-    ResourceData getBackDisabledFile();
-    ResourceData getCrossNormalFile();
-    ResourceData getCrossDisabledFile();
 
 CC_CONSTRUCTOR_ACCESS:
     virtual bool init() override;

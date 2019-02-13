@@ -291,13 +291,6 @@ public:
     Sprite* getSlidBallDisabledRenderer() const;
     Node* getSlidBallRenderer() const;
 
-    ResourceData getBackFile();
-    ResourceData getProgressBarFile();
-    ResourceData getBallNormalFile();
-    ResourceData getBallPressedFile();
-    ResourceData getBallDisabledFile();
-    ResourceData getBallMouseOverFile();
-    
     Node *getSlidBarNode() const;
 
 CC_CONSTRUCTOR_ACCESS:

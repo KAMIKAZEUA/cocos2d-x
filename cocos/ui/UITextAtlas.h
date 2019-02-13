@@ -140,7 +140,6 @@ public:
      */
     virtual void adaptRenderers() override;
 
-    ResourceData getRenderFile();
 
 protected:
     virtual void initRenderer() override;

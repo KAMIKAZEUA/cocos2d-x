@@ -366,11 +366,6 @@ public:
     void resetDisabledRender();
     void resetMouseOverRender();
 
-    ResourceData getNormalFile();
-    ResourceData getPressedFile();
-    ResourceData getDisabledFile();
-    ResourceData getMouseOverFile();
-
     void setNormalBackgroundColor(const Color3B &color);
     const Color3B& getNormalBackgroundColor() const;
     void setPressedBackgroundColor(const Color3B &color);

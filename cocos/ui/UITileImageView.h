@@ -102,8 +102,6 @@ public:
     virtual Size getVirtualRendererSize() const override;
     virtual Node* getVirtualRenderer() override;
 
-    ResourceData getRenderFile();
-
     virtual void setGLProgram(GLProgram* glProgram) override;
     virtual void setGLProgramState(cocos2d::GLProgramState* glProgramState) override;
 CC_CONSTRUCTOR_ACCESS:

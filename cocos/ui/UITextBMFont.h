@@ -96,8 +96,6 @@ public:
      */
     virtual std::string getDescription() const override;
 
-    ResourceData getRenderFile();
-
     /**
     * reset TextBMFont inner label
     */

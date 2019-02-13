@@ -186,8 +186,6 @@ public:
     virtual Node* getVirtualRenderer() override;
     virtual std::string getDescription() const override;
 
-    ResourceData getRenderFile(); 
-
 protected:
     virtual void initRenderer() override;
     virtual void onSizeChanged() override;

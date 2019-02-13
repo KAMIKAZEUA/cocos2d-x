@@ -286,12 +286,6 @@ public:
     
     BarType getBarType() const { return _barType; }
     void setBarType(const BarType barType);
-
-    ResourceData getBackFile();
-    ResourceData getBallNormalFile();
-    ResourceData getBallPressedFile();
-    ResourceData getBallDisabledFile();
-    ResourceData getBallMouseOverFile();
     
     Node *getSlidBarNode() const;
     

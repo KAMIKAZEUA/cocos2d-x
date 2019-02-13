@@ -30,7 +30,7 @@ THE SOFTWARE.
 #include "platform/CCFileUtils.h"
 #include "ui/UIHelper.h"
 #include <algorithm>
-#include "editor-support/cocostudio/CocosStudioExtension.h"
+
 
 NS_CC_BEGIN
 
@@ -1833,34 +1833,6 @@ void Button::resetMouseOverRender()
     _buttonMouseOverRenderer->resetRender();
 }
 
-ResourceData Button::getNormalFile()
-{
-    ResourceData rData;
-    rData.type = (int)_normalTexType;
-    rData.file = _normalFileName;
-    return rData;
-}
-ResourceData Button::getPressedFile()
-{
-    ResourceData rData;
-    rData.type = (int)_pressedTexType;
-    rData.file = _pressedFileName;
-    return rData;
-}
-ResourceData Button::getDisabledFile()
-{
-    ResourceData rData;
-    rData.type = (int)_disabledTexType;
-    rData.file = _disabledFileName;
-    return rData;
-}
-ResourceData Button::getMouseOverFile()
-{
-    ResourceData rData;
-    rData.type = (int)_mouseOverTexType;
-    rData.file = _mouseOverFileName;
-    return rData;
-}
 
 }
 
