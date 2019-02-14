@@ -239,13 +239,6 @@ bool Widget::init()
 
 void Widget::onEnter()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnEnter))
-            return;
-    }
-#endif
     
     if (!_usingLayoutComponent)
         updateSizeAndPosition();
@@ -254,13 +247,6 @@ void Widget::onEnter()
 
 void Widget::onExit()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnExit))
-            return;
-    }
-#endif
     
     unscheduleUpdate();
     ProtectedNode::onExit();

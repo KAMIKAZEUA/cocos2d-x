@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 #include <string>
 
-#include "base/CCScriptSupport.h"
+
 #include "deprecated/CCArray.h"
 
 using namespace std;

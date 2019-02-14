@@ -31,6 +31,11 @@ THE SOFTWARE.
 #include "ui/GUIExport.h"
 #include "ui/UIWidget.h"
 #include "base/CCMap.h"
+#include "base/CCEventTouch.h"
+#include "base/CCEventType.h"
+#include "base/CCTouch.h"
+#include "base/CCEventKeyboard.h"
+
 
 /**
  * @addtogroup ui

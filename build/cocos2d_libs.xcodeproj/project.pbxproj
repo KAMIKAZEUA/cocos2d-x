@@ -1396,10 +1396,6 @@
 		50ABBEA01925AB6F00A911A9 /* CCScheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBE011925AB6E00A911A9 /* CCScheduler.cpp */; };
 		50ABBEA11925AB6F00A911A9 /* CCScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE021925AB6E00A911A9 /* CCScheduler.h */; };
 		50ABBEA21925AB6F00A911A9 /* CCScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE021925AB6E00A911A9 /* CCScheduler.h */; };
-		50ABBEA31925AB6F00A911A9 /* CCScriptSupport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBE031925AB6E00A911A9 /* CCScriptSupport.cpp */; };
-		50ABBEA41925AB6F00A911A9 /* CCScriptSupport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBE031925AB6E00A911A9 /* CCScriptSupport.cpp */; };
-		50ABBEA51925AB6F00A911A9 /* CCScriptSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE041925AB6E00A911A9 /* CCScriptSupport.h */; };
-		50ABBEA61925AB6F00A911A9 /* CCScriptSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE041925AB6E00A911A9 /* CCScriptSupport.h */; };
 		50ABBEA71925AB6F00A911A9 /* CCTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBE051925AB6E00A911A9 /* CCTouch.cpp */; };
 		50ABBEA81925AB6F00A911A9 /* CCTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ABBE051925AB6E00A911A9 /* CCTouch.cpp */; };
 		50ABBEA91925AB6F00A911A9 /* CCTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ABBE061925AB6E00A911A9 /* CCTouch.h */; };
@@ -2667,8 +2663,6 @@
 		50ABBE001925AB6E00A911A9 /* CCRefPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCRefPtr.h; path = ../base/CCRefPtr.h; sourceTree = "<group>"; };
 		50ABBE011925AB6E00A911A9 /* CCScheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCScheduler.cpp; path = ../base/CCScheduler.cpp; sourceTree = "<group>"; };
 		50ABBE021925AB6E00A911A9 /* CCScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCScheduler.h; path = ../base/CCScheduler.h; sourceTree = "<group>"; };
-		50ABBE031925AB6E00A911A9 /* CCScriptSupport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCScriptSupport.cpp; path = ../base/CCScriptSupport.cpp; sourceTree = "<group>"; };
-		50ABBE041925AB6E00A911A9 /* CCScriptSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCScriptSupport.h; path = ../base/CCScriptSupport.h; sourceTree = "<group>"; };
 		50ABBE051925AB6E00A911A9 /* CCTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCTouch.cpp; path = ../base/CCTouch.cpp; sourceTree = "<group>"; };
 		50ABBE061925AB6E00A911A9 /* CCTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCTouch.h; path = ../base/CCTouch.h; sourceTree = "<group>"; };
 		50ABBE071925AB6E00A911A9 /* ccTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccTypes.cpp; path = ../base/ccTypes.cpp; sourceTree = "<group>"; };
@@ -3320,8 +3314,6 @@
 				50ABBE001925AB6E00A911A9 /* CCRefPtr.h */,
 				50ABBE011925AB6E00A911A9 /* CCScheduler.cpp */,
 				50ABBE021925AB6E00A911A9 /* CCScheduler.h */,
-				50ABBE031925AB6E00A911A9 /* CCScriptSupport.cpp */,
-				50ABBE041925AB6E00A911A9 /* CCScriptSupport.h */,
 				50ABBE051925AB6E00A911A9 /* CCTouch.cpp */,
 				50ABBE061925AB6E00A911A9 /* CCTouch.h */,
 				50ABBE071925AB6E00A911A9 /* ccTypes.cpp */,
@@ -5092,7 +5084,6 @@
 				D0FD03591A3B51AA00825BB5 /* CCAllocatorStrategyDefault.h in Headers */,
 				50ABBE891925AB6F00A911A9 /* CCMap.h in Headers */,
 				50ABBE8D1925AB6F00A911A9 /* CCNS.h in Headers */,
-				50ABBEA51925AB6F00A911A9 /* CCScriptSupport.h in Headers */,
 				292DB14519B4574100A80320 /* UIEditBoxImpl-android.h in Headers */,
 				15AE1B9A19AADFDF00C27E9E /* UIHBox.h in Headers */,
 				15AE1A3819AAD3D500C27E9E /* b2Shape.h in Headers */,
@@ -5986,7 +5977,6 @@
 				1A40D14F1E8E56C7002E363A /* memorybuffer.h in Headers */,
 				50ABBE8E1925AB6F00A911A9 /* CCNS.h in Headers */,
 				15AE1AB519AAD40300C27E9E /* b2Contact.h in Headers */,
-				50ABBEA61925AB6F00A911A9 /* CCScriptSupport.h in Headers */,
 				46C02E0A18E91123004B7456 /* xxhash.h in Headers */,
 				5034CA4C191D591100CE6051 /* ccShader_Label_df_glow.frag in Headers */,
 				503DD8EB1926736A00CD74DD /* CCGL-ios.h in Headers */,
@@ -6527,7 +6517,6 @@
 				1A01C69818F57BE800EFE3A6 /* CCSet.cpp in Sources */,
 				1AAF584F180E40B9000584C8 /* LocalStorage.cpp in Sources */,
 				15AE1BD219AAE01E00C27E9E /* CCControlPotentiometer.cpp in Sources */,
-				50ABBEA31925AB6F00A911A9 /* CCScriptSupport.cpp in Sources */,
 				826294331AAF001C00CB7CF7 /* HttpAsynConnection-apple.m in Sources */,
 				A5E1A90E1DF5A0C80070716C /* CCBXNodeLoaderCache.cpp in Sources */,
 				15AE1A2A19AAD3D500C27E9E /* b2Distance.cpp in Sources */,
@@ -6968,7 +6957,6 @@
 				50ABBDA81925AB4100A911A9 /* CCRenderCommand.cpp in Sources */,
 				B5A738971BB0051F00BAAEF8 /* UIPageViewIndicator.cpp in Sources */,
 				15AE1B7419AADA9A00C27E9E /* UILoadingBar.cpp in Sources */,
-				50ABBEA41925AB6F00A911A9 /* CCScriptSupport.cpp in Sources */,
 				501216A11AC473AD009A4BEA /* CCMaterial.cpp in Sources */,
 				3E6176761960F89B00DE83F5 /* CCEventListenerController.cpp in Sources */,
 				A5B57D231A3B919900CCBDB4 /* CCBXReaderParams.cpp in Sources */,

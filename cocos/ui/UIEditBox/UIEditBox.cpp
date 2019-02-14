@@ -36,18 +36,14 @@ EditBox::EditBox(void)
 : _editBoxImpl(nullptr)
 , _delegate(nullptr)
 , _backgroundSprite(nullptr)
-#if CC_ENABLE_SCRIPT_BINDING
-, _scriptEditBoxHandler(0)
-#endif
+
 {
 }
 
 EditBox::~EditBox(void)
 {
     CC_SAFE_DELETE(_editBoxImpl);
-#if CC_ENABLE_SCRIPT_BINDING
-    unregisterScriptEditBoxHandler();
-#endif
+
 }
 
 
@@ -496,13 +492,6 @@ void EditBox::draw(Renderer *renderer, const Mat4 &parentTransform, uint32_t par
 
 void EditBox::onEnter(void)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnEnter))
-            return;
-    }
-#endif
     
     Widget::onEnter();
     if (_editBoxImpl != nullptr)
@@ -524,13 +513,6 @@ void EditBox::updatePosition(float dt)
 
 void EditBox::onExit(void)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnExit))
-            return;
-    }
-#endif
     
     Widget::onExit();
     if (_editBoxImpl != nullptr)
@@ -589,23 +571,6 @@ void EditBox::keyboardDidHide(IMEKeyboardNotificationInfo& /*info*/)
 {
 	
 }
-
-#if CC_ENABLE_SCRIPT_BINDING
-void EditBox::registerScriptEditBoxHandler(int handler)
-{
-    unregisterScriptEditBoxHandler();
-    _scriptEditBoxHandler = handler;
-}
-
-void EditBox::unregisterScriptEditBoxHandler(void)
-{
-    if (0 != _scriptEditBoxHandler)
-    {
-        ScriptEngineManager::getInstance()->getScriptEngine()->removeScriptHandler(_scriptEditBoxHandler);
-        _scriptEditBoxHandler = 0;
-    }
-}
-#endif
 
 }
 

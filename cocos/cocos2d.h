@@ -253,8 +253,7 @@ THE SOFTWARE.
 	#include "platform/emcc/CCStdC-emcc.h"
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_EMSCRIPTEN
 
-// script_support
-#include "base/CCScriptSupport.h"
+#include "base/CCTouch.h"
 
 // sprite_nodes
 #include "2d/CCAnimation.h"

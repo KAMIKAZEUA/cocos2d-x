@@ -100,9 +100,6 @@ Node::Node()
 , _ignoreAnchorPointForPosition(false)
 , _reorderChildDirty(false)
 , _isTransitionFinished(false)
-#if CC_ENABLE_SCRIPT_BINDING
-, _updateScriptHandler(0)
-#endif
 , _componentContainer(nullptr)
 , _displayedOpacity(255)
 , _realOpacity(255)
@@ -126,10 +123,6 @@ Node::Node()
     _eventDispatcher = _director->getEventDispatcher();
     _eventDispatcher->retain();
     
-#if CC_ENABLE_SCRIPT_BINDING
-    ScriptEngineProtocol* engine = ScriptEngineManager::getInstance()->getScriptEngine();
-    _scriptType = engine != nullptr ? engine->getScriptType() : kScriptTypeNone;
-#endif
     _transform = _inverse = Mat4::IDENTITY;
 }
 
@@ -151,13 +144,6 @@ Node::~Node()
 {
     CCLOGINFO( "deallocing Node: %p - tag: %i", this, _tag );
     
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_updateScriptHandler)
-    {
-        ScriptEngineManager::getInstance()->getScriptEngine()->removeScriptHandler(_updateScriptHandler);
-    }
-#endif
-
     // User object has to be released before others, since userObject may have a weak reference of this node
     // It may invoke `node->stopAllActions();` while `_actionManager` is null if the next line is after `CC_SAFE_RELEASE_NULL(_actionManager)`.
     CC_SAFE_RELEASE_NULL(_userObject);
@@ -198,18 +184,6 @@ bool Node::init()
 
 void Node::cleanup()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJS(this, kNodeOnCleanup))
-            return;
-    }
-    else if (_scriptType == kScriptTypeLua)
-    {
-        ScriptEngineManager::sendNodeEventToLua(this, kNodeOnCleanup);
-    }
-#endif // #if CC_ENABLE_SCRIPT_BINDING
-    
     // actions
     this->stopAllActions();
     // timers
@@ -699,16 +673,7 @@ void Node::setUserData(void *userData)
 
 void Node::setUserObject(Ref* userObject)
 {
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-    auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-    if (sEngine)
-    {
-        if (userObject)
-            sEngine->retainScriptObject(this, userObject);
-        if (_userObject)
-            sEngine->releaseScriptObject(this, _userObject);
-    }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
+
     CC_SAFE_RETAIN(userObject);
     CC_SAFE_RELEASE(_userObject);
     _userObject = userObject;
@@ -1092,13 +1057,7 @@ void Node::removeAllChildrenWithCleanup(bool cleanup)
         {
             child->cleanup();
         }
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-        auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-        if (sEngine)
-        {
-            sEngine->releaseScriptObject(this, child);
-        }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
+
         // set parent nil at the end
         child->setParent(nullptr);
     }
@@ -1124,13 +1083,6 @@ void Node::detachChild(Node *child, ssize_t childIndex, bool doCleanup)
         child->cleanup();
     }
     
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-    auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-    if (sEngine)
-    {
-        sEngine->releaseScriptObject(this, child);
-    }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
     // set parent nil at the end
     child->setParent(nullptr);
 
@@ -1141,13 +1093,7 @@ void Node::detachChild(Node *child, ssize_t childIndex, bool doCleanup)
 // helper used by reorderChild & add
 void Node::insertChild(Node* child, int z)
 {
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-    auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-    if (sEngine)
-    {
-        sEngine->retainScriptObject(this, child);
-    }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
+
     _transformUpdated = true;
     _reorderChildDirty = true;
     _children.pushBack(child);
@@ -1298,13 +1244,6 @@ void Node::onEnter()
     {
         ++__attachedNodeCount;
     }
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJS(this, kNodeOnEnter))
-            return;
-    }
-#endif
     
     if (_onEnterCallback)
         _onEnterCallback();
@@ -1323,23 +1262,10 @@ void Node::onEnter()
     
     _running = true;
     
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeLua)
-    {
-        ScriptEngineManager::sendNodeEventToLua(this, kNodeOnEnter);
-    }
-#endif
 }
 
 void Node::onEnterTransitionDidFinish()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJS(this, kNodeOnEnterTransitionDidFinish))
-            return;
-    }
-#endif
     
     if (_onEnterTransitionDidFinishCallback)
         _onEnterTransitionDidFinishCallback();
@@ -1348,36 +1274,17 @@ void Node::onEnterTransitionDidFinish()
     for( const auto &child: _children)
         child->onEnterTransitionDidFinish();
     
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeLua)
-    {
-        ScriptEngineManager::sendNodeEventToLua(this, kNodeOnEnterTransitionDidFinish);
-    }
-#endif
 }
 
 void Node::onExitTransitionDidStart()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJS(this, kNodeOnExitTransitionDidStart))
-            return;
-    }
-#endif
     
     if (_onExitTransitionDidStartCallback)
         _onExitTransitionDidStartCallback();
     
     for( const auto &child: _children)
         child->onExitTransitionDidStart();
-    
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeLua)
-    {
-        ScriptEngineManager::sendNodeEventToLua(this, kNodeOnExitTransitionDidStart);
-    }
-#endif
+
 }
 
 void Node::onExit()
@@ -1386,13 +1293,6 @@ void Node::onExit()
     {
         --__attachedNodeCount;
     }
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJS(this, kNodeOnExit))
-            return;
-    }
-#endif
     
     if (_onExitCallback)
         _onExitCallback();
@@ -1409,12 +1309,6 @@ void Node::onExit()
     for( const auto &child: _children)
         child->onExit();
     
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeLua)
-    {
-        ScriptEngineManager::sendNodeEventToLua(this, kNodeOnExit);
-    }
-#endif
 }
 
 void Node::setEventDispatcher(EventDispatcher* dispatcher)
@@ -1532,9 +1426,6 @@ void Node::scheduleUpdateWithPriorityLua(int nHandler, int priority)
 {
     unscheduleUpdate();
     
-#if CC_ENABLE_SCRIPT_BINDING
-    _updateScriptHandler = nHandler;
-#endif
     
     _scheduler->scheduleUpdate(this, priority, !_running);
 }
@@ -1543,13 +1434,7 @@ void Node::unscheduleUpdate()
 {
     _scheduler->unscheduleUpdate(this);
     
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_updateScriptHandler)
-    {
-        ScriptEngineManager::getInstance()->getScriptEngine()->removeScriptHandler(_updateScriptHandler);
-        _updateScriptHandler = 0;
-    }
-#endif
+
 }
 
 void Node::schedule(SEL_SCHEDULE selector)
@@ -1641,15 +1526,7 @@ void Node::pauseSchedulerAndActions()
 // override me
 void Node::update(float fDelta)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (0 != _updateScriptHandler)
-    {
-        //only lua use
-        SchedulerScriptData data(_updateScriptHandler,fDelta);
-        ScriptEvent event(kScheduleEvent,&data);
-        ScriptEngineManager::getInstance()->getScriptEngine()->sendEvent(&event);
-    }
-#endif
+
     
     if (_componentContainer && !_componentContainer->isEmpty())
     {

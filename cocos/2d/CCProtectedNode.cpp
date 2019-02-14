@@ -59,13 +59,6 @@ ProtectedNode * ProtectedNode::create(void)
 
 void ProtectedNode::cleanup()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnCleanup))
-            return;
-    }
-#endif // #if CC_ENABLE_SCRIPT_BINDING
     
     Node::cleanup();
     // timers
@@ -171,13 +164,6 @@ void ProtectedNode::removeProtectedChild(cocos2d::Node *child, bool cleanup)
         // set parent nil at the end
         child->setParent(nullptr);
         
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-        auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-        if (sEngine)
-        {
-            sEngine->releaseScriptObject(this, child);
-        }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
         _protectedChildren.erase(index);
     }
 }
@@ -205,13 +191,7 @@ void ProtectedNode::removeAllProtectedChildrenWithCleanup(bool cleanup)
         {
             child->cleanup();
         }
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-        auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-        if (sEngine)
-        {
-            sEngine->releaseScriptObject(this, child);
-        }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
+
         // set parent nil at the end
         child->setParent(nullptr);
     }
@@ -238,13 +218,7 @@ void ProtectedNode::removeProtectedChildByTag(int tag, bool cleanup)
 // helper used by reorderChild & add
 void ProtectedNode::insertProtectedChild(cocos2d::Node *child, int z)
 {
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-    auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-    if (sEngine)
-    {
-        sEngine->retainScriptObject(this, child);
-    }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
+
     _reorderProtectedChildDirty = true;
     _protectedChildren.pushBack(child);
     child->setLocalZOrder(z);
@@ -337,13 +311,6 @@ void ProtectedNode::visit(Renderer* renderer, const Mat4 &parentTransform, uint3
 
 void ProtectedNode::onEnter()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnEnter))
-            return;
-    }
-#endif
     
     Node::onEnter();
     for( const auto &child: _protectedChildren)
@@ -352,13 +319,6 @@ void ProtectedNode::onEnter()
 
 void ProtectedNode::onEnterTransitionDidFinish()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnEnterTransitionDidFinish))
-            return;
-    }
-#endif
     
     Node::onEnterTransitionDidFinish();
     for( const auto &child: _protectedChildren)
@@ -367,13 +327,6 @@ void ProtectedNode::onEnterTransitionDidFinish()
 
 void ProtectedNode::onExitTransitionDidStart()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnExitTransitionDidStart))
-            return;
-    }
-#endif
     
     Node::onExitTransitionDidStart();
     for( const auto &child: _protectedChildren)
@@ -382,13 +335,6 @@ void ProtectedNode::onExitTransitionDidStart()
 
 void ProtectedNode::onExit()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnExit))
-            return;
-    }
-#endif
     
     Node::onExit();
     for( const auto &child: _protectedChildren)

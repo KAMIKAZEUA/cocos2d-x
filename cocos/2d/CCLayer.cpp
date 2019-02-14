@@ -27,7 +27,7 @@ THE SOFTWARE.
 
 #include <stdarg.h>
 #include "2d/CCLayer.h"
-#include "base/CCScriptSupport.h"
+
 #include "platform/CCDevice.h"
 #include "renderer/CCRenderer.h"
 #include "renderer/ccGLStateCache.h"
@@ -92,35 +92,20 @@ Layer *Layer::create()
 
 int Layer::executeScriptTouchHandler(EventTouch::EventCode eventType, Touch* touch, Event* event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        TouchScriptData data(eventType, this, touch, event);
-        ScriptEvent scriptEvent(kTouchEvent, &data);
-        return ScriptEngineManager::getInstance()->getScriptEngine()->sendEvent(&scriptEvent);
-    }
-#else
+
     CC_UNUSED_PARAM(eventType);
     CC_UNUSED_PARAM(touch);
     CC_UNUSED_PARAM(event);
-#endif
+
     return 0;
 }
 
 int Layer::executeScriptTouchesHandler(EventTouch::EventCode eventType, const std::vector<Touch*>& touches, Event* event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        TouchesScriptData data(eventType, this, touches, event);
-        ScriptEvent scriptEvent(kTouchesEvent, &data);
-        return ScriptEngineManager::getInstance()->getScriptEngine()->sendEvent(&scriptEvent);
-    }
-#else
     CC_UNUSED_PARAM(eventType);
     CC_UNUSED_PARAM(touches);
     CC_UNUSED_PARAM(event);
-#endif
+
     return 0;
 }
 
@@ -268,16 +253,8 @@ void Layer::setAccelerometerInterval(double interval) {
 
 void Layer::onAcceleration(Acceleration* acc, Event* /*unused_event*/)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if(kScriptTypeNone != _scriptType)
-    {
-        BasicScriptData data(this,(void*)acc);
-        ScriptEvent event(kAccelerometerEvent,&data);
-        ScriptEngineManager::getInstance()->getScriptEngine()->sendEvent(&event);
-    }
-#else
     CC_UNUSED_PARAM(acc);
-#endif
+
 }
 
 void Layer::onKeyPressed(EventKeyboard::KeyCode /*keyCode*/, Event* /*unused_event*/)
@@ -286,16 +263,9 @@ void Layer::onKeyPressed(EventKeyboard::KeyCode /*keyCode*/, Event* /*unused_eve
 
 void Layer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* /*unused_event*/)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if(kScriptTypeNone != _scriptType)
-    {
-        KeypadScriptData data(keyCode, this);
-        ScriptEvent event(kKeypadEvent,&data);
-        ScriptEngineManager::getInstance()->getScriptEngine()->sendEvent(&event);
-    }
-#else
+
     CC_UNUSED_PARAM(keyCode);
-#endif
+
 }
 
 /// isKeyboardEnabled getter
@@ -333,115 +303,68 @@ void Layer::setKeypadEnabled(bool enabled)
 
 bool Layer::onTouchBegan(Touch *touch, Event *event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        return executeScriptTouchHandler(EventTouch::EventCode::BEGAN, touch, event) == 0 ? false : true;
-    }
-#else
+
     CC_UNUSED_PARAM(touch);
     CC_UNUSED_PARAM(event);
-#endif
+
     CCASSERT(false, "Layer#ccTouchBegan override me");
     return true;
 }
 
 void Layer::onTouchMoved(Touch *touch, Event *event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        executeScriptTouchHandler(EventTouch::EventCode::MOVED, touch, event);
-        return;
-    }
-#else
+
     CC_UNUSED_PARAM(touch);
     CC_UNUSED_PARAM(event);
-#endif
+
 }
 
 void Layer::onTouchEnded(Touch *touch, Event *event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        executeScriptTouchHandler(EventTouch::EventCode::ENDED, touch, event);
-        return;
-    }
-#else
+
     CC_UNUSED_PARAM(touch);
     CC_UNUSED_PARAM(event);
-#endif
+
 }
 
 void Layer::onTouchCancelled(Touch *touch, Event *event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        executeScriptTouchHandler(EventTouch::EventCode::CANCELLED, touch, event);
-        return;
-    }
-#else
+
     CC_UNUSED_PARAM(touch);
     CC_UNUSED_PARAM(event);
-#endif
+
 }    
 
 void Layer::onTouchesBegan(const std::vector<Touch*>& touches, Event *event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        executeScriptTouchesHandler(EventTouch::EventCode::BEGAN, touches, event);
-        return;
-    }
-#else
+
     CC_UNUSED_PARAM(touches);
     CC_UNUSED_PARAM(event);
-#endif
+
 }
 
 void Layer::onTouchesMoved(const std::vector<Touch*>& touches, Event *event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        executeScriptTouchesHandler(EventTouch::EventCode::MOVED, touches, event);
-        return;
-    }
-#else
+
     CC_UNUSED_PARAM(touches);
     CC_UNUSED_PARAM(event);
-#endif
+
 }
 
 void Layer::onTouchesEnded(const std::vector<Touch*>& touches, Event *event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        executeScriptTouchesHandler(EventTouch::EventCode::ENDED, touches, event);
-        return;
-    }
-#else
+
     CC_UNUSED_PARAM(touches);
     CC_UNUSED_PARAM(event);
-#endif
+
 }
 
 void Layer::onTouchesCancelled(const std::vector<Touch*>& touches, Event *event)
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (kScriptTypeLua == _scriptType)
-    {
-        executeScriptTouchesHandler(EventTouch::EventCode::CANCELLED, touches, event);
-        return;
-    }
-#else
+
     CC_UNUSED_PARAM(touches);
     CC_UNUSED_PARAM(event);
-#endif
+
 }
 
 std::string Layer::getDescription() const
@@ -1171,13 +1094,6 @@ LayerMultiplex* LayerMultiplex::createWithArray(const Vector<Layer*>& arrayOfLay
 
 void LayerMultiplex::addLayer(Layer* layer)
 {
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-    auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-    if (sEngine)
-    {
-        sEngine->retainScriptObject(this, layer);
-    }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
     _layers.pushBack(layer);
 }
 
@@ -1196,23 +1112,12 @@ bool LayerMultiplex::initWithLayers(Layer *layer, va_list params)
     if (Layer::init())
     {
         _layers.reserve(5);
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-        auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-        if (sEngine)
-        {
-            sEngine->retainScriptObject(this, layer);
-        }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
+
         _layers.pushBack(layer);
 
         Layer *l = va_arg(params,Layer*);
         while( l ) {
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-            if (sEngine)
-            {
-                sEngine->retainScriptObject(this, l);
-            }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
+
             _layers.pushBack(l);
             l = va_arg(params,Layer*);
         }
@@ -1229,19 +1134,7 @@ bool LayerMultiplex::initWithArray(const Vector<Layer*>& arrayOfLayers)
 {
     if (Layer::init())
     {
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-        auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-        if (sEngine)
-        {
-            for (const auto &layer : arrayOfLayers)
-            {
-                if (layer)
-                {
-                    sEngine->retainScriptObject(this, layer);
-                }
-            }
-        }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
+
         _layers.reserve(arrayOfLayers.size());
         _layers.pushBack(arrayOfLayers);
 
@@ -1274,13 +1167,6 @@ void LayerMultiplex::switchToAndReleaseMe(int n)
     CCASSERT( n < _layers.size(), "Invalid index in MultiplexLayer switchTo message" );
 
     this->removeChild(_layers.at(_enabledLayer), true);
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-    auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-    if (sEngine)
-    {
-        sEngine->releaseScriptObject(this, _layers.at(_enabledLayer));
-    }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
     
     _layers.replace(_enabledLayer, nullptr);
 

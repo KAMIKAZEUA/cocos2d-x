@@ -30,7 +30,7 @@ THE SOFTWARE.
 
 #include "base/CCRef.h"
 #include "math/CCGeometry.h"
-#include "base/CCScriptSupport.h"
+
 
 NS_CC_BEGIN
 
@@ -178,9 +178,7 @@ protected:
     /** The action flag field. To categorize action into certain groups.*/
     unsigned int _flags;
 
-#if CC_ENABLE_SCRIPT_BINDING
-    ccScriptType _scriptType;         ///< type of script binding, lua or javascript
-#endif
+
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(Action);
 };

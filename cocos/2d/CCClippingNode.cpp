@@ -114,13 +114,6 @@ bool ClippingNode::init(Node *stencil)
 
 void ClippingNode::onEnter()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnEnter))
-            return;
-    }
-#endif
     
     Node::onEnter();
     
@@ -136,13 +129,6 @@ void ClippingNode::onEnter()
 
 void ClippingNode::onEnterTransitionDidFinish()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnEnterTransitionDidFinish))
-            return;
-    }
-#endif
     
     Node::onEnterTransitionDidFinish();
     
@@ -154,13 +140,6 @@ void ClippingNode::onEnterTransitionDidFinish()
 
 void ClippingNode::onExitTransitionDidStart()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnExitTransitionDidStart))
-            return;
-    }
-#endif
     
     if (_stencil != nullptr)
     {
@@ -172,13 +151,6 @@ void ClippingNode::onExitTransitionDidStart()
 
 void ClippingNode::onExit()
 {
-#if CC_ENABLE_SCRIPT_BINDING
-    if (_scriptType == kScriptTypeJavascript)
-    {
-        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnExit))
-            return;
-    }
-#endif
     
     if (_stencil != nullptr)
     {
@@ -293,18 +265,7 @@ void ClippingNode::setStencil(Node *stencil)
     //early out if the stencil is already set
     if (_stencil == stencil)
         return;
-    
-#if CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-    auto sEngine = ScriptEngineManager::getInstance()->getScriptEngine();
-    if (sEngine)
-    {
-        if (_stencil)
-            sEngine->releaseScriptObject(this, _stencil);
-        if (stencil)
-            sEngine->retainScriptObject(this, stencil);
-    }
-#endif // CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-    
+        
     //cleanup current stencil
     if(_stencil != nullptr && _stencil->isRunning())
     {
