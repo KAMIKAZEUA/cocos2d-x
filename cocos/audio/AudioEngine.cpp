@@ -304,7 +304,9 @@ void AudioEngine::setPitch(int audioID, float pitch)
         }
         
         if (it->second.pitch != pitch){
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
             _audioEngineImpl->setPitch(audioID, pitch);
+#endif
             it->second.pitch = pitch;
         }
     }
